@@ -2,9 +2,19 @@ import './App.css';
 import Header from './MyComponents/Header';
 import Todos from './MyComponents/Todos';
 import {Footer} from './MyComponents/Footer';
+import { useState } from 'react';
 
 function App() {
-  var todos=[
+
+const Ondelete= (todo)=>{
+  console.log("Deleting",todo)
+
+  settodos(todos.filter((e)=>{return e!==todo ;}))
+
+}
+
+const [todos,settodos]=useState([
+  
     { sno:1,
       title:"Study",
       desc:"Go and study react"
@@ -19,12 +29,13 @@ function App() {
   title:"Study",
   desc:"Go and study react"
 }
-]
+
+])
 
   return (
     <>
     <Header title="TODO LIST" searchBar={true}/>
-    <Todos todos={todos}/>
+    <Todos todos={todos} Ondelete={Ondelete}/>
     <Footer/>
     </>
   );
